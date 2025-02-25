@@ -1,0 +1,19 @@
+.file-label {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .file-label:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+  }
+  
+  .file-input {
+    display: none;
+  }

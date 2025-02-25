@@ -1,0 +1,31 @@
+.text-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+    margin-top: 30px;
+    transition: var(--transition);
+  }
+  
+  .text-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .text-title {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  
+  .text-content {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 15px;
+  }
+  
+  .text-paragraph {
+    margin-bottom: 15px;
+    white-space: pre-line;
+    font-size: 1.1rem;
+  }

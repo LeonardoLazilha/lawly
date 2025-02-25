@@ -1,0 +1,25 @@
+.heart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .heart-button {
+    background: none;
+    border: none;
+    font-size: 48px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .heart-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .love-message {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #e74c3c;
+    font-size: 1.2rem;
+  }

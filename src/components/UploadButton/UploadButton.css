@@ -1,0 +1,22 @@
+.upload-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .upload-button:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+  }
+  
+  .upload-button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+  }
