@@ -8,8 +8,7 @@ import LoveMessage from '../LoveMessage/LoveMessage';
 import Header from '../Header/Header';
 import './PdfUploader.css';
 
-const BASE_URL = 'https://lawly-api-24b515c4f971.herokuapp.com/';
-
+const BASE_URL = 'https://lawly-api-b71e63a8217e.herokuapp.com/';
 
 const PdfUploader = () => {
   const [file, setFile] = useState(null);
@@ -32,8 +31,8 @@ const PdfUploader = () => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post(`${BASE_URL}upload`, formData, {
-        headers: {
+      const response = await axios.post(`${BASE_URL}pdf`, formData, {
+            headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
