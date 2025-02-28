@@ -1,6 +1,11 @@
 :root {
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
+  --primary-color: #005387;
+  --primary-hover-color: #3480b0;
+  --secondary-color: #00CAF5;
+  --secondary-hover-color: #01aad0;
+  --yellow-color: #FFD034;
+  --red-color: #FF3F56;
+  --red-hover-color: #e8394d;
   --background-color: #f5f7fa;
   --text-color: #333;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -39,10 +44,10 @@ body {
 }
 
 .file-label {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   color: white;
   padding: 12px 20px;
-  border-radius: 25px;
+  border-radius: 5px;
   cursor: pointer;
   transition: var(--transition);
   font-weight: 500;
@@ -50,7 +55,7 @@ body {
 }
 
 .file-label:hover {
-  background-color: #2980b9;
+  background-color: var(--secondary-hover-color);
   transform: translateY(-2px);
 }
 
@@ -63,7 +68,7 @@ body {
   color: white;
   border: none;
   padding: 12px 20px;
-  border-radius: 25px;
+  border-radius: 5px;
   cursor: pointer;
   transition: var(--transition);
   font-weight: 500;
@@ -86,7 +91,7 @@ body {
   color: white;
   border: none;
   padding: 12px 20px;
-  border-radius: 25px;
+  border-radius: 5px;
   cursor: pointer;
   transition: var(--transition);
   font-weight: 500;
@@ -101,7 +106,7 @@ body {
 
 .text-container {
   background-color: white;
-  border-radius: 12px;
+  border-radius: 5px;
   padding: 30px;
   box-shadow: var(--box-shadow);
   margin-top: 30px;
@@ -157,19 +162,18 @@ body {
   font-size: 1.2rem;
 }
 
-/* Custom scrollbar for webkit browsers */
 .text-content::-webkit-scrollbar {
   width: 8px;
 }
 
 .text-content::-webkit-scrollbar-track {
   background: #f1f1f1;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .text-content::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .text-content::-webkit-scrollbar-thumb:hover {

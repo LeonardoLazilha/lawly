@@ -76,3 +76,15 @@
       font-size: 1.2rem;
     }
   }
+
+  .document-info {
+    margin-bottom: 1rem;
+  }
+
+  .document-input {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+  }

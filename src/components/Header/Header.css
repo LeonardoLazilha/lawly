@@ -38,7 +38,8 @@
 }
 
 .nav-menu a:hover {
-  color:  var(--text-color);
+  color: var(--secondary-color);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
 .menu-toggle {
@@ -103,4 +104,20 @@
   .nav-menu li {
     text-align: center;
   }
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #e0e0e0;
+}
+
+.nav-link.active {
+  color: var(--yellow-color);
+  font-weight: bold;
 } 

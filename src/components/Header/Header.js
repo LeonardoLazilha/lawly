@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Header.css';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,11 +17,21 @@ const Header = () => {
           <span className="hamburger"></span>
         </button>
         <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <ul>
-            <li><a href="/">Converter PDF</a></li>
-            <li><a href="/">em breve</a></li>
-            <li><a href="/">em breve</a></li>
-          </ul>
+          <div className="nav-links">
+            <NavLink 
+              to="/" 
+              className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+              end
+            >
+              Home
+            </NavLink>
+            <NavLink 
+              to="/documents" 
+              className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+            >
+              Documentos
+            </NavLink>
+          </div>
         </nav>
       </div>
     </header>

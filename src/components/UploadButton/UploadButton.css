@@ -3,7 +3,7 @@
     color: white;
     border: none;
     padding: 12px 20px;
-    border-radius: 25px;
+    border-radius: 5px;
     cursor: pointer;
     transition: var(--transition);
     font-weight: 500;
@@ -11,7 +11,7 @@
   }
   
   .upload-button:hover {
-    background-color: #27ae60;
+    background-color: var(--secondary-hover-color);
     transform: translateY(-2px);
   }
   
