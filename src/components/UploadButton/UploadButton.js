@@ -11,7 +11,7 @@ const UploadButton = ({ handleUpload, loading, file }) => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      {loading ? 'Carregando...' : 'Fazer Upload'}
+      {loading ? 'Carregando...' : 'Fazer Upload ⬆'}
     </motion.button>
   );
 };

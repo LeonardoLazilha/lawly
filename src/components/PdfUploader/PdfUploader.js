@@ -50,7 +50,7 @@ const PdfUploader = () => {
     <div className="container">
       <div className="upload-container">
         <label htmlFor="file-upload" className="file-label">
-          {file ? file.name : 'Escolha o arquivo'}
+          {file ? file.name : 'Escolha o arquivo 📄'}
         </label>
         <input type="file" id="file-upload" className="file-input" onChange={handleFileChange} accept=".pdf" />
         <UploadButton handleUpload={handleUpload} loading={loading} file={file} />

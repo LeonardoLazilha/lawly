@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-content">
-        <div className="logo">Lawly</div>
+        <div className="logo">Lawly ⚖️</div>
         <button className="menu-toggle" onClick={toggleMenu}>
           <span className="hamburger"></span>
         </button>
