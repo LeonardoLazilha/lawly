@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { motion } from 'framer-motion';
+import { savedDocsListService } from './savedDocsService';
+import { MESSAGES } from '../../../../utils/messages';
+import { toast } from 'react-toastify';
 import './SavedDocsList.css';
 
-const LOCAL_URL = 'http://localhost:8080';
 
 const SavedDocsList = () => {
   const [documents, setDocuments] = useState([]);
@@ -18,8 +19,8 @@ const SavedDocsList = () => {
 
   const fetchDocuments = async () => {
     try {
-      const response = await axios.get(`${LOCAL_URL}/documents/list`);
-      setDocuments(response.data);
+      const data = await savedDocsListService.listAllDocs();
+      setDocuments(data);
       setLoading(false);
     } catch (error) {
       console.error('Erro ao buscar documentos:', error);
@@ -30,19 +31,13 @@ const SavedDocsList = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${LOCAL_URL}/documents/delete/${docToDelete.id}`, {
-        method: 'DELETE',
-      });
-
-      if (response.ok) {
-        setDocuments(documents.filter(doc => doc.id !== docToDelete.id));
-        setShowConfirmModal(false);
-      } else {
-        throw new Error('Erro ao deletar documento');
-      }
+      await savedDocsListService.deleteDoc(docToDelete.id);
+      setDocuments(documents.filter(doc => doc.id !== docToDelete.id));
+      setShowConfirmModal(false);
+      toast.success(MESSAGES.DOC_DELETED_SUCESS)
     } catch (error) {
-      console.error('Erro ao deletar:', error);
-      alert('Não foi possível deletar o documento');
+      console.error('Erro ao deletar documento:', error);
+      toast.error(MESSAGES.DOC_DELETED_ERROR)
       setShowConfirmModal(false); 
     }
   };

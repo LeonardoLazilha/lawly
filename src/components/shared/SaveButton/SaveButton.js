@@ -1,35 +1,26 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { MESSAGES } from '../../../utils/messages';
+import { toast } from 'react-toastify';
+import { saveButtonService } from './saveButtonService';
 import './SaveButton.css';
+
 
 const SaveButton = ({ texto, onSave }) => {
   const [showModal, setShowModal] = useState(false);
   const [name, setTitle] = useState('');
   const [label, setLabel] = useState('');
 
-  const URL = 'http://localhost:8080/documents/save';
-
   const handleSave = async () => {
     try {
-      console.log('Dados sendo enviados:', { title: name, label, content: texto });
-      const response = await axios.post(URL, {
-        name,
-        label,
-        content: texto
-      });
-
-      console.log('Resposta do servidor:', response);
-      
-      if (response.status === 201) {
-        setShowModal(false);
-        setTitle('');
-        setLabel('');
-        alert('Documento salvo com sucesso!');
-        onSave && onSave();
-      }
+      await saveButtonService.saveDoc(name, label, texto);
+      setShowModal(false);
+      setTitle('');
+      setLabel('');
+      toast.success(MESSAGES.PDF_SAVE_SUCESS);
+      onSave && onSave();
     } catch (error) {
       console.error('Erro ao salvar o documento:', error);
-      alert('Erro ao salvar o documento');
+      toast.error(MESSAGES.PDF_SAVE_ERROR);
     }
   };
 

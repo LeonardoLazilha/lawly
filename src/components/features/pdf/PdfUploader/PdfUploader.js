@@ -1,15 +1,15 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
-import axios from 'axios';
-import { motion, AnimatePresence } from 'framer-motion';
-import UploadButton from '../UploadButton/UploadButton'
+import { MESSAGES } from '../../../../utils/messages';
+import SaveButton from '../../../shared/SaveButton/SaveButton';
+import UploadButton from '../../../shared/UploadButton/UploadButton';
+import HeartButton from '../../love/HeartButton/HeartButton';
+import LoveMessage from '../../love/LoveMessage/LoveMessage';
 import TextDisplay from '../TextDisplay/TextDisplay';
-import HeartButton from '../HeartButton/HeartButton';
-import LoveMessage from '../LoveMessage/LoveMessage';
-import SaveButton from '../SaveButton/SaveButton';
+import { pdfService } from './pdfService';
 import './PdfUploader.css';
 
-//const BASE_URL = 'https://lawly-api-b71e63a8217e.herokuapp.com/';
-const LOCAL_URL = 'http://localhost:8080'
+
 
 const PdfUploader = () => {
   const [file, setFile] = useState(null);
@@ -17,34 +17,37 @@ const PdfUploader = () => {
   const [loading, setLoading] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
 
+  const isValidFile = (file) => {
+    return file && file.type === 'application/pdf';
+  };
+
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    if (isValidFile(selectedFile)) {
+      setFile(selectedFile);
+      setTexto('');
+    } else {
+      setFile(null);
+      setTexto('Por favor, selecione um arquivo PDF válido.');
+    }
   };
 
   const handleUpload = async () => {
     if (!file) {
-      setTexto('Por favor, selecione um arquivo.');
+      setTexto(MESSAGES.NO_FILE);
       return;
     }
 
     setLoading(true);
-    const formData = new FormData();
-    formData.append('file', file);
-
     try {
-      const response = await axios.post(`${LOCAL_URL}/pdf`, formData, {
-            headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      setTexto(response.data.text);
+      const data = await pdfService.uploadPdf(file);
+      setTexto(data.text);
     } catch (error) {
-      console.error('Erro ao fazer upload do PDF', error);
-      setTexto('Erro ao processar o PDF.');
+      setTexto(MESSAGES.PDF_ERROR);
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <div className="container">
